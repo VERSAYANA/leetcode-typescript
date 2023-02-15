@@ -29,3 +29,15 @@ Output: [3,4,6,16,17]
 
 - `1 <= nums.length <= 1000`
 - `-10^6 <= nums[i] <= 10^6`
+
+## Solution
+
+```ts
+export function runningSum(nums: number[]): number[] {
+  for (let i = 1; i < nums.length; i++) {
+    nums[i] = nums[i - 1] + nums[i];
+  }
+
+  return nums;
+}
+```
