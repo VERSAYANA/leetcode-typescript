@@ -31,10 +31,40 @@ Output: true
 - $t.length == s.length$
 - `s` and `t` consist of any valid ASCII character.
 
-## Solution
+## Solution1
 
 ```ts
-export function isIsomorphic(s: string, t: string): boolean {
+function isIsomorphic1(s: string, t: string): boolean {
+  const sCharToTCharMap = new Map<string, string>();
+  const usedTChars = new Set<string>();
+  for (let i = 0; i < s.length; i++) {
+    const mappedCharFromT = sCharToTCharMap.get(s[i]);
+    if (mappedCharFromT === undefined) {
+      // The character from `s` was not previously mapped to a character from `t`
+      if (usedTChars.has(t[i])) {
+        // But the current character from t was already used for another character from s
+        return false;
+      }
+      sCharToTCharMap.set(s[i], t[i]);
+      usedTChars.add(t[i]);
+    } else if (mappedCharFromT !== t[i]) {
+      // The character from `s` was already mapped to a character from `t`
+      // , but a different character from `t`, not the current one.
+      return false;
+    }
+  }
+
+  return true;
+}
+```
+
+- **Time complexity: $O(n)$** , where `n` is the length of the strings `s` and `t`
+- **Space complexity: $O(n)$** , where `n` is the length of the strings `s` and `t`
+
+## Solution2
+
+```ts
+function isIsomorphic2(s: string, t: string): boolean {
   const charMap = new Map<string, string>();
   const usedChars = new Set<string>();
   let transformed = "";
@@ -61,4 +91,4 @@ export function isIsomorphic(s: string, t: string): boolean {
 ```
 
 - **Time complexity: $O(n)$** , where `n` is the length of the strings `s` and `t`
-- **Space complexity: $O(n)$** , where `m` is the number of unique characters in the strings `s` and `t`
+- **Space complexity: $O(m)$** , where `m` is the number of unique characters in the strings `s` and `t`
