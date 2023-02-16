@@ -27,8 +27,8 @@ Output: true
 
 #### Constraints:
 
-- `1 <= s.length <= 5 * 104`
-- `t.length == s.length`
+- $1 <= s.length <= 5 * 10^4$
+- $t.length == s.length$
 - `s` and `t` consist of any valid ASCII character.
 
 ## Solution
