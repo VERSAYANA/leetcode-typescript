@@ -69,7 +69,7 @@ function reverseList2(head: ListNode | null): ListNode | null {
 ```
 
 - **Time complexity: $O(n)$** , where `n` is the number of nodes in the list
-- **Space complexity: $O(n)$ ** , where `n` is the number of nodes in the list
+- **Space complexity: $O(n)$** , where `n` is the number of nodes in the list
 
 ## Solution 3
 
